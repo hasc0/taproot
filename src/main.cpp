@@ -185,31 +185,31 @@ void disp_dry() {
     tft.print("<------------------>");
 
     tft.setCursor(0, 20);
-    tft.print("|                  |");
+    tft.print("| \\|/              |");
 
     tft.setCursor(0, 40);
-    tft.print("|                  |");
+    tft.print("| -O-    __        |");
 
     tft.setCursor(0, 60);
-    tft.print("|                  |");
+    tft.print("| /|\\   |  |  _    |");
 
     tft.setCursor(0, 80);
-    tft.print("|                  |");
+    tft.print("|    _  |  |_| |   |");
 
     tft.setCursor(0, 100);
-    tft.print("|                  |");
+    tft.print("|   | |_|   ___|   |");
 
     tft.setCursor(0, 120);
-    tft.print("|                  |");
+    tft.print("|   |___   |       |");
 
     tft.setCursor(0, 140);
-    tft.print("|                  |");
+    tft.print("|       |  |       |");
 
     tft.setCursor(0, 160);
-    tft.print("|                  |");
+    tft.print("|..................|");
 
     tft.setCursor(0, 180);
-    tft.print("|                  |");
+    tft.print("|..................|");
 
     tft.setCursor(0, 200);
     tft.print("<------------------>");
@@ -225,28 +225,28 @@ void disp_med() {
     tft.print("|                  |");
 
     tft.setCursor(0, 40);
-    tft.print("|                  |");
+    tft.print("|  /\\    /\\    /\\  |");
 
     tft.setCursor(0, 60);
-    tft.print("|                  |");
+    tft.print("| /  \\  /  \\  /  \\ |");
 
     tft.setCursor(0, 80);
-    tft.print("|                  |");
+    tft.print("|/_/\\_\\/_/\\_\\/_/\\_\\|");
 
     tft.setCursor(0, 100);
-    tft.print("|                  |");
+    tft.print("|  ||    ||    ||  |");
 
     tft.setCursor(0, 120);
-    tft.print("|                  |");
+    tft.print("|  ||    ||    ||  |");
 
     tft.setCursor(0, 140);
-    tft.print("|                  |");
+    tft.print("|..................|");
 
     tft.setCursor(0, 160);
-    tft.print("|                  |");
+    tft.print("|..................|");
 
     tft.setCursor(0, 180);
-    tft.print("|                  |");
+    tft.print("|..................|");
 
     tft.setCursor(0, 200);
     tft.print("<------------------>");
@@ -259,31 +259,31 @@ void disp_wet() {
     tft.print("<------------------>");
 
     tft.setCursor(0, 20);
-    tft.print("|                  |");
+    tft.print("|              \\|/ |");
 
     tft.setCursor(0, 40);
-    tft.print("|                  |");
+    tft.print("|              -O- |");
 
     tft.setCursor(0, 60);
-    tft.print("|                  |");
+    tft.print("|              /|\\ |");
 
     tft.setCursor(0, 80);
-    tft.print("|                  |");
+    tft.print("|~~~~~~~~~~~~~~~~~~|");
 
     tft.setCursor(0, 100);
-    tft.print("|                  |");
+    tft.print("|~~~~~~~~~~~~~~~~~~|");
 
     tft.setCursor(0, 120);
-    tft.print("|                  |");
+    tft.print("|~~~~~~~~~~~~~~~~~~|");
 
     tft.setCursor(0, 140);
-    tft.print("|                  |");
+    tft.print("|~~~~~~~~~~~~~~~~~~|");
 
     tft.setCursor(0, 160);
-    tft.print("|                  |");
+    tft.print("|..................|");
 
     tft.setCursor(0, 180);
-    tft.print("|                  |");
+    tft.print("|..................|");
 
     tft.setCursor(0, 200);
     tft.print("<------------------>");
@@ -296,31 +296,31 @@ void disp_err() {
     tft.print("<------------------>");
 
     tft.setCursor(0, 20);
-    tft.print("|                  |");
+    tft.print("| *  .  *  .  *  . |");
 
     tft.setCursor(0, 40);
-    tft.print("|                  |");
+    tft.print("|  .  *  .  *  .  *|");
 
     tft.setCursor(0, 60);
-    tft.print("|                  |");
+    tft.print("| *  .  *  .  *  . |");
 
     tft.setCursor(0, 80);
-    tft.print("|                  |");
+    tft.print("|.  *  .  *  .  *  |");
 
     tft.setCursor(0, 100);
-    tft.print("|                  |");
+    tft.print("| *  .  *  .  *  . |");
 
     tft.setCursor(0, 120);
-    tft.print("|                  |");
+    tft.print("|  .  *  .  *  .  *|");
 
     tft.setCursor(0, 140);
-    tft.print("|                  |");
+    tft.print("| *  .  *  .  *  . |");
 
     tft.setCursor(0, 160);
-    tft.print("|                  |");
+    tft.print("|..................|");
 
     tft.setCursor(0, 180);
-    tft.print("|                  |");
+    tft.print("|..................|");
 
     tft.setCursor(0, 200);
     tft.print("<------------------>");
