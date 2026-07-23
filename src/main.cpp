@@ -38,12 +38,18 @@ typedef enum {
 
 void draw(float temp);
 
+void disp_dry();
+void disp_med();
+void disp_wet();
+void disp_err();
+
 Adafruit_ST7789 tft = Adafruit_ST7789(TFT_TCS, TFT_DC, TFT_RST);
 Adafruit_seesaw soil;
 
 volatile moist_t state;
 volatile lite_t brite = HI;
 
+volatile moist_t last_state;
 volatile bool last_brite = HIGH;
 
 void setup() {
@@ -65,14 +71,16 @@ void setup() {
     tft.fillScreen(ST77XX_BLACK);
 
     tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
-    tft.setTextSize(2);
+    tft.setTextSize(5);
 
-    tft.setCursor(0, 0);
-    tft.print("Welcome to taproot!");
+    tft.setCursor(0, 100);
+    tft.print("taproot!");
 
-    delay(500);
+    delay(3000);
 
     tft.fillScreen(ST77XX_BLACK);
+
+    tft.setTextSize(2);
 }
 
 void loop() {
@@ -81,7 +89,6 @@ void loop() {
             Serial.println("Error: Soil sensor failed to reinitialize.");
         } else {
             Serial.println("Success: Soil sensor reinitialized successfully.");
-            tft.fillScreen(ST77XX_BLACK);
         }
     }
 
@@ -131,32 +138,190 @@ void loop() {
 }
 
 void draw(float temp) {
-    tft.setCursor(0, 0);
+    if (state != last_state || !last_state) {
+        switch (state) {
+            case DRY:
+                disp_dry();
+                break;
+            case MED:
+                disp_med();
+                break;
+            case WET:
+                disp_wet();
+                break;
+            case ERR:
+                disp_err();
+                break;
+        }
 
-    switch (state) {
-        case DRY:
-            tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
-            tft.print("Soil is Dry ");
-            break;
-        case MED:
-            tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
-            tft.print("Soil is Fine");
-            break;
-        case WET:
-            tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
-            tft.print("Soil is Wet ");
-            break;
-        case ERR:
-            tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
-            tft.print("Sensor Error");
-            break;
+        last_state = state;
     }
 
-    tft.setCursor(0, 20);
+    tft.setCursor(0, 220);
 
     if (state != ERR) {
-        tft.print(temp);
+        int round = static_cast<int>(temp);
+        String out = " Temperature: ";
+        out += round;
+
+        if (round < 10) {
+            out += "  *F ";
+        } else if (round >= 10 && round < 100) {
+            out += " *F ";
+        } else {
+            out += "*F ";
+        }
+
+        tft.print(out);
     } else {
-        tft.print("Reinitializing...");
+        tft.print("    Sensor Error    ");
     }
+}
+
+void disp_dry() {
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+
+    tft.setCursor(0, 0);
+    tft.print("<------------------>");
+
+    tft.setCursor(0, 20);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 40);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 60);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 80);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 100);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 120);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 140);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 160);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 180);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 200);
+    tft.print("<------------------>");
+}
+
+void disp_med() {
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+
+    tft.setCursor(0, 0);
+    tft.print("<------------------>");
+
+    tft.setCursor(0, 20);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 40);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 60);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 80);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 100);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 120);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 140);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 160);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 180);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 200);
+    tft.print("<------------------>");
+}
+
+void disp_wet() {
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+
+    tft.setCursor(0, 0);
+    tft.print("<------------------>");
+
+    tft.setCursor(0, 20);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 40);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 60);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 80);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 100);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 120);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 140);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 160);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 180);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 200);
+    tft.print("<------------------>");
+}
+
+void disp_err() {
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+
+    tft.setCursor(0, 0);
+    tft.print("<------------------>");
+
+    tft.setCursor(0, 20);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 40);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 60);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 80);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 100);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 120);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 140);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 160);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 180);
+    tft.print("|                  |");
+
+    tft.setCursor(0, 200);
+    tft.print("<------------------>");
 }
