@@ -76,6 +76,15 @@ void setup() {
 }
 
 void loop() {
+    if (state == ERR) {
+        if (!soil.begin(SOIL_ADDR)) {
+            Serial.println("Error: Soil sensor failed to reinitialize.");
+        } else {
+            Serial.println("Success: Soil sensor reinitialized successfully.");
+            tft.fillScreen(ST77XX_BLACK);
+        }
+    }
+
     float temp_c = soil.getTemp();
     float temp_f = (temp_c * (9.0 / 5.0)) + 32.0;
 
@@ -148,6 +157,6 @@ void draw(float temp) {
     if (state != ERR) {
         tft.print(temp);
     } else {
-        tft.print("Check for Short");
+        tft.print("Reinitializing...");
     }
 }
