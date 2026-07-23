@@ -19,42 +19,135 @@
 #define SOIL_SCL A5
 #define SOIL_ADDR 0x36
 
+#define BTN_LITE D2
+
+#define DEBOUNCE 100
+
 typedef enum {
-    FULL_DRY,
-    PART_DRY,
-    NEUTRAL,
-    PART_WET,
-    FULL_WET
+    DRY,
+    MED,
+    WET,
+    ERR
 } moist_t;
+
+typedef enum {
+    LO,
+    MD,
+    HI
+} lite_t;
+
+void draw(float temp);
 
 Adafruit_ST7789 tft = Adafruit_ST7789(TFT_TCS, TFT_DC, TFT_RST);
 Adafruit_seesaw soil;
 
+volatile moist_t state;
+volatile lite_t brite = HI;
+
+volatile bool last_brite = HIGH;
+
 void setup() {
     Serial.begin(115200);
+
     tft.init(240, 240);
-    soil.begin(SOIL_ADDR);
+    pinMode(TFT_LITE, OUTPUT);
+    analogWrite(TFT_LITE, 192);
+
+    // TODO: Proper Error Handling
+    if (!soil.begin(SOIL_ADDR)) {
+        Serial.println("Error: Soil sensor failed to initialize.");
+    } else {
+        Serial.println("Success: Soil sensor initialized successfully.");
+    }
+
+    pinMode(BTN_LITE, INPUT_PULLUP);
 
     tft.fillScreen(ST77XX_BLACK);
-    tft.setCursor(0, 0);
-    tft.setTextColor(ST77XX_WHITE);
+
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
     tft.setTextSize(2);
 
+    tft.setCursor(0, 0);
     tft.print("Welcome to taproot!");
+
     delay(500);
+
+    tft.fillScreen(ST77XX_BLACK);
 }
 
 void loop() {
-    float temp = soil.getTemp();
+    float temp_c = soil.getTemp();
+    float temp_f = (temp_c * (9 / 5)) + 32;
+
     uint16_t cap = soil.touchRead(0);
 
-    tft.fillRect(0, 20, 240, 40, ST77XX_BLACK);
+    uint32_t now = millis();
+
+    bool read_brite = digitalRead(BTN_LITE);
+
+    if (read_brite != last_brite) {
+        if (now > DEBOUNCE) {
+            if (read_brite == LOW) {
+                switch (brite) {
+                    case LO:
+                        analogWrite(TFT_LITE, 64);
+                        brite = MD;
+                        break;
+                    case MD:
+                        analogWrite(TFT_LITE, 128);
+                        brite = HI;
+                        break;
+                    case HI:
+                        analogWrite(TFT_LITE, 192);
+                        brite = LO;
+                        break;
+                }
+            }
+        }
+    }
+
+    last_brite = read_brite;
+
+    if (cap <= 600) {
+        state = DRY;
+    } else if (cap <= 800) {
+        state = MED;
+    } else if (cap <= 1023) {
+        state = WET;
+    } else {
+        state = ERR;
+    }
+
+    draw(temp_f);
+}
+
+void draw(float temp) {
+    tft.setCursor(0, 0);
+
+    switch (state) {
+        case DRY:
+            tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+            tft.print("Soil is Dry ");
+            break;
+        case MED:
+            tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+            tft.print("Soil is Fine");
+            break;
+        case WET:
+            tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+            tft.print("Soil is Wet ");
+            break;
+        case ERR:
+            tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+            tft.print("Sensor Error");
+            break;
+    }
 
     tft.setCursor(0, 20);
-    tft.print(temp);
 
-    tft.setCursor(0, 40);
-    tft.print(cap);
-
-    delay(100);
+    if (state != ERR) {
+        tft.print(temp);
+    } else {
+        tft.print("Check for Short");
+    }
 }
