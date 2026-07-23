@@ -77,7 +77,7 @@ void setup() {
 
 void loop() {
     float temp_c = soil.getTemp();
-    float temp_f = (temp_c * (9 / 5)) + 32;
+    float temp_f = (temp_c * (9.0 / 5.0)) + 32.0;
 
     uint16_t cap = soil.touchRead(0);
 
