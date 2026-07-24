@@ -157,7 +157,8 @@ void draw(float temp) {
         last_state = state;
     }
 
-    tft.setCursor(0, 220);
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+    tft.setCursor(0, 224);
 
     if (state != ERR) {
         int round = static_cast<int>(temp);
@@ -182,146 +183,392 @@ void disp_dry() {
     tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
 
     tft.setCursor(0, 0);
-    tft.print("<------------------>");
+    tft.print("*------------------*");
 
-    tft.setCursor(0, 20);
-    tft.print("| \\|/              |");
+    tft.setCursor(0, 16);
+    tft.print("|                  |");
 
-    tft.setCursor(0, 40);
-    tft.print("| -O-    __        |");
+    tft.setCursor(0, 32);
+    tft.print("|");
+    tft.setTextColor(ST77XX_ORANGE, ST77XX_BLACK);
+    tft.setCursor(12, 32);
+    tft.print(" \\|/              ");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 32);
+    tft.print("|");
 
-    tft.setCursor(0, 60);
-    tft.print("| /|\\   |  |  _    |");
+    tft.setCursor(0, 48);
+    tft.print("|");
+    tft.setTextColor(ST77XX_ORANGE, ST77XX_BLACK);
+    tft.setCursor(12, 48);
+    tft.print(" -O-    ");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(108, 48);
+    tft.print("__        ");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 48);
+    tft.print("|");
+
+    tft.setCursor(0, 64);
+    tft.print("|");
+    tft.setTextColor(ST77XX_ORANGE, ST77XX_BLACK);
+    tft.setCursor(12, 64);
+    tft.print(" /|\\");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(60, 64);
+    tft.print("   |  |  _    ");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 64);
+    tft.print("|");
 
     tft.setCursor(0, 80);
-    tft.print("|    _  |  |_| |   |");
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 80);
+    tft.print("    _  |  |_| |   ");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 80);
+    tft.print("|");
 
-    tft.setCursor(0, 100);
-    tft.print("|   | |_|   ___|   |");
+    tft.setCursor(0, 96);
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 96);
+    tft.print("   | |_|   ___|   ");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 96);
+    tft.print("|");
 
-    tft.setCursor(0, 120);
-    tft.print("|   |___   |       |");
+    tft.setCursor(0, 112);
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 112);
+    tft.print("   |___   |       ");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 112);
+    tft.print("|");
 
-    tft.setCursor(0, 140);
-    tft.print("|       |  |       |");
+    tft.setCursor(0, 128);
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 128);
+    tft.print("       |  |       ");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 128);
+    tft.print("|");
+
+    tft.setCursor(0, 144);
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 144);
+    tft.print("       |  |       ");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 144);
+    tft.print("|");
 
     tft.setCursor(0, 160);
-    tft.print("|..................|");
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 160);
+    tft.print("       |  |       ");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 160);
+    tft.print("|");
 
-    tft.setCursor(0, 180);
-    tft.print("|..................|");
+    tft.setCursor(0, 176);
+    tft.print("|");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(12, 176);
+    tft.print("..................");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 176);
+    tft.print("|");
 
-    tft.setCursor(0, 200);
-    tft.print("<------------------>");
+    tft.setCursor(0, 192);
+    tft.print("|");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(12, 192);
+    tft.print("..................");
+    tft.setTextColor(ST77XX_RED, ST77XX_BLACK);
+    tft.setCursor(228, 192);
+    tft.print("|");
+
+    tft.setCursor(0, 208);
+    tft.print("*------------------*");
 }
 
 void disp_med() {
     tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
 
     tft.setCursor(0, 0);
-    tft.print("<------------------>");
+    tft.print("*------------------*");
 
-    tft.setCursor(0, 20);
+    tft.setCursor(0, 16);
     tft.print("|                  |");
 
-    tft.setCursor(0, 40);
-    tft.print("|  /\\    /\\    /\\  |");
+    tft.setCursor(0, 32);
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 32);
+    tft.print("  /\\    /\\    /\\  ");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 32);
+    tft.print("|");
 
-    tft.setCursor(0, 60);
-    tft.print("| /  \\  /  \\  /  \\ |");
+    tft.setCursor(0, 48);
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 48);
+    tft.print(" /  \\  /  \\  /  \\ ");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 48);
+    tft.print("|");
+
+    tft.setCursor(0, 64);
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 64);
+    tft.print("/_  _\\/_  _\\/_  _\\");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 64);
+    tft.print("|");
 
     tft.setCursor(0, 80);
-    tft.print("|/_/\\_\\/_/\\_\\/_/\\_\\|");
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 80);
+    tft.print(" /  \\  /  \\  /  \\ ");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 80);
+    tft.print("|");
 
-    tft.setCursor(0, 100);
-    tft.print("|  ||    ||    ||  |");
+    tft.setCursor(0, 96);
+    tft.print("|");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(12, 96);
+    tft.print("/_/\\_\\/_/\\_\\/_/\\_\\");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 96);
+    tft.print("|");
 
-    tft.setCursor(0, 120);
-    tft.print("|  ||    ||    ||  |");
+    tft.setCursor(0, 112);
+    tft.print("|");
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+    tft.setCursor(12, 112);
+    tft.print("  ||    ||    ||  ");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 112);
+    tft.print("|");
 
-    tft.setCursor(0, 140);
-    tft.print("|..................|");
+    tft.setCursor(0, 128);
+    tft.print("|");
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+    tft.setCursor(12, 128);
+    tft.print("  ||    ||    ||  ");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 128);
+    tft.print("|");
+
+    tft.setCursor(0, 144);
+    tft.print("|");
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+    tft.setCursor(12, 144);
+    tft.print("  ||    ||    ||  ");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 144);
+    tft.print("|");
 
     tft.setCursor(0, 160);
-    tft.print("|..................|");
+    tft.print("|");
+    tft.setTextColor(ST77XX_ORANGE, ST77XX_BLACK);
+    tft.setCursor(12, 160);
+    tft.print("..................");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 160);
+    tft.print("|");
 
-    tft.setCursor(0, 180);
-    tft.print("|..................|");
+    tft.setCursor(0, 176);
+    tft.print("|");
+    tft.setTextColor(ST77XX_ORANGE, ST77XX_BLACK);
+    tft.setCursor(12, 176);
+    tft.print("..................");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 176);
+    tft.print("|");
 
-    tft.setCursor(0, 200);
-    tft.print("<------------------>");
+    tft.setCursor(0, 192);
+    tft.print("|");
+    tft.setTextColor(ST77XX_ORANGE, ST77XX_BLACK);
+    tft.setCursor(12, 192);
+    tft.print("..................");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(228, 192);
+    tft.print("|");
+
+    tft.setCursor(0, 208);
+    tft.print("*------------------*");
 }
 
 void disp_wet() {
     tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
 
     tft.setCursor(0, 0);
-    tft.print("<------------------>");
+    tft.print("*------------------*");
 
-    tft.setCursor(0, 20);
-    tft.print("|              \\|/ |");
+    tft.setCursor(0, 16);
+    tft.print("|                  |");
 
-    tft.setCursor(0, 40);
-    tft.print("|              -O- |");
+    tft.setCursor(0, 32);
+    tft.print("|");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(12, 32);
+    tft.print("              \\|/ ");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 32);
+    tft.print("|");
 
-    tft.setCursor(0, 60);
-    tft.print("|              /|\\ |");
+    tft.setCursor(0, 48);
+    tft.print("|");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(12, 48);
+    tft.print("              -O- ");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 48);
+    tft.print("|");
+
+    tft.setCursor(0, 64);
+    tft.print("|");
+    tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
+    tft.setCursor(12, 64);
+    tft.print("              /|\\ ");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 64);
+    tft.print("|");
 
     tft.setCursor(0, 80);
-    tft.print("|~~~~~~~~~~~~~~~~~~|");
+    tft.print("|                  |");
 
-    tft.setCursor(0, 100);
-    tft.print("|~~~~~~~~~~~~~~~~~~|");
+    tft.setCursor(0, 96);
+    tft.print("|");
+    tft.setTextColor(ST77XX_BLUE, ST77XX_BLACK);
+    tft.setCursor(12, 96);
+    tft.print("~~~~~~~~~~~~~~~~~~");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 96);
+    tft.print("|");
 
-    tft.setCursor(0, 120);
-    tft.print("|~~~~~~~~~~~~~~~~~~|");
+    tft.setCursor(0, 112);
+    tft.print("|");
+    tft.setTextColor(ST77XX_BLUE, ST77XX_BLACK);
+    tft.setCursor(12, 112);
+    tft.print("~~~~~~~~~~~~~~~~~~");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 112);
+    tft.print("|");
 
-    tft.setCursor(0, 140);
-    tft.print("|~~~~~~~~~~~~~~~~~~|");
+    tft.setCursor(0, 128);
+    tft.print("|");
+    tft.setTextColor(ST77XX_BLUE, ST77XX_BLACK);
+    tft.setCursor(12, 128);
+    tft.print("~~~~~~~~~~~~~~~~~~");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 128);
+    tft.print("|");
+
+    tft.setCursor(0, 144);
+    tft.print("|");
+    tft.setTextColor(ST77XX_BLUE, ST77XX_BLACK);
+    tft.setCursor(12, 144);
+    tft.print("~~~~~~~~~~~~~~~~~~");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 144);
+    tft.print("|");
 
     tft.setCursor(0, 160);
-    tft.print("|..................|");
+    tft.print("|");
+    tft.setTextColor(ST77XX_BLUE, ST77XX_BLACK);
+    tft.setCursor(12, 160);
+    tft.print("~~~~~~~~~~~~~~~~~~");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 160);
+    tft.print("|");
 
-    tft.setCursor(0, 180);
-    tft.print("|..................|");
+    tft.setCursor(0, 176);
+    tft.print("|");
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+    tft.setCursor(12, 176);
+    tft.print("..................");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 176);
+    tft.print("|");
 
-    tft.setCursor(0, 200);
-    tft.print("<------------------>");
+    tft.setCursor(0, 192);
+    tft.print("|");
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+    tft.setCursor(12, 192);
+    tft.print("..................");
+    tft.setTextColor(ST77XX_GREEN, ST77XX_BLACK);
+    tft.setCursor(228, 192);
+    tft.print("|");
+
+    tft.setCursor(0, 208);
+    tft.print("*------------------*");
 }
 
 void disp_err() {
     tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
 
     tft.setCursor(0, 0);
-    tft.print("<------------------>");
+    tft.print("*------------------*");
 
-    tft.setCursor(0, 20);
+    tft.setCursor(0, 16);
     tft.print("| *  .  *  .  *  . |");
 
-    tft.setCursor(0, 40);
+    tft.setCursor(0, 32);
     tft.print("|  .  *  .  *  .  *|");
 
-    tft.setCursor(0, 60);
+    tft.setCursor(0, 48);
     tft.print("| *  .  *  .  *  . |");
 
-    tft.setCursor(0, 80);
+    tft.setCursor(0, 64);
     tft.print("|.  *  .  *  .  *  |");
 
-    tft.setCursor(0, 100);
+    tft.setCursor(0, 80);
     tft.print("| *  .  *  .  *  . |");
 
-    tft.setCursor(0, 120);
+    tft.setCursor(0, 96);
     tft.print("|  .  *  .  *  .  *|");
 
-    tft.setCursor(0, 140);
+    tft.setCursor(0, 112);
+    tft.print("| *  .  *  .  *  . |");
+
+    tft.setCursor(0, 128);
+    tft.print("|.  *  .  *  .  *  |");
+
+    tft.setCursor(0, 144);
     tft.print("| *  .  *  .  *  . |");
 
     tft.setCursor(0, 160);
-    tft.print("|..................|");
+    tft.print("|  .  *  .  *  .  *|");
 
-    tft.setCursor(0, 180);
-    tft.print("|..................|");
+    tft.setCursor(0, 176);
+    tft.print("|");
+    tft.setTextColor(ST77XX_CYAN, ST77XX_BLACK);
+    tft.setCursor(12, 176);
+    tft.print("..................");
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+    tft.setCursor(228, 176);
+    tft.print("|");
 
-    tft.setCursor(0, 200);
-    tft.print("<------------------>");
+    tft.setCursor(0, 192);
+    tft.print("|");
+    tft.setTextColor(ST77XX_CYAN, ST77XX_BLACK);
+    tft.setCursor(12, 192);
+    tft.print("..................");
+    tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
+    tft.setCursor(228, 192);
+    tft.print("|");
+
+    tft.setCursor(0, 208);
+    tft.print("*------------------*");
 }
